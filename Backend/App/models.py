@@ -40,10 +40,11 @@ class FriendShip(db.Model):
 class APIKey(db.Model):
     __tablename__ = 'tb_APIKey'
     AK_id = db.Column(db.String(30), primary_key=True)
-    AK_name = db.Column(db.String(30))  # 模型名称
-    AK_value = db.Column(db.String(30))  # APIKey值
-    AK_auth = db.Column(db.String(30))  # 鉴权秘钥
-    AK_type = db.Column(db.String(30))  # APIKey类型
+    AK_name = db.Column(db.String(30), nullable=False)  # 模型名称
+    AK_value = db.Column(db.String(30), nullable=False)  # APIKey值
+    AK_intro = db.Column(db.String(600), nullable=True)  # LLM的详细背景介绍
+    # AK_auth = db.Column(db.String(30))  # 鉴权秘钥
+    # AK_type = db.Column(db.String(30))  # APIKey类型
     userid = db.Column(db.String(30), db.ForeignKey(User.user_id))  # 用户ID---外键
 
 
